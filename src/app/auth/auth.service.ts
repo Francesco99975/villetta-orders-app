@@ -26,8 +26,8 @@ export class AuthService {
   //   return this.http.post(`http://localhost:5000/auth/signup`, {name, email, password});
   // }
 
-  login(type: number, email: string, password: string) {
-    return this.http.post(`${environment.ORDERS_API}/auth/login`, {email, password})
+  login(username: string, password: string) {
+    return this.http.post(`${environment.ORDERS_API}/auth/login`, {username, password})
     .pipe(catchError(this.handleError), tap((res: any) => this.handleAuth(res.token, res.userId, res.username)));
   }
 
