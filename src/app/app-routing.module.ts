@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -11,11 +12,13 @@ const routes: Routes = [
   },
   {
     path: 'coming',
-    loadChildren: () => import('./coming-orders/coming-orders.module').then((m) => m.ComingOrdersModule)
+    loadChildren: () => import('./coming-orders/coming-orders.module').then((m) => m.ComingOrdersModule),
+    canActivate: [AuthGuard]
   }, 
   {
     path: 'fulfilled',
-    loadChildren: () => import('./fulfilled-orders/fulfilled-orders.module').then((m) => m.FulfilledOrdersModule)
+    loadChildren: () => import('./fulfilled-orders/fulfilled-orders.module').then((m) => m.FulfilledOrdersModule),
+    canActivate: [AuthGuard]
   }
 ];
 
