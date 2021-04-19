@@ -25,17 +25,6 @@
                 </ul>
             </nav>
         </div>
-
-        <div class="nav__actions">
-        <button *ngIf="checkout" [attr.data-count]="cartQuantity"  class="btn btn-checkout" (click)="onCheckout()">
-                View Order
-        </button>
-
-        <button *ngIf="!checkout" class="btn btn-order" (click)="onOrder()">
-                Order Now!
-        </button>
-            
-        </div>
     </header>
     <nav class="mobile-nav">
         <div class="nav__image">
