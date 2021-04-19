@@ -44,8 +44,9 @@ export class Order {
     tip: number;
     eta: number;
     fulfilled: boolean;
+    createdAt: Date;
 
-    constructor({id, clientname, items, email, address, phone, pickup, deliveryFees, tip, eta, fulfilled}) {
+    constructor({id, clientname, items, email, address, phone, pickup, deliveryFees, tip, eta, fulfilled, createdAt}) {
         this.id = id;
         this.clientname = clientname;
         this.items = items;
@@ -57,6 +58,11 @@ export class Order {
         this.tip = tip;
         this.eta = eta;
         this.fulfilled = fulfilled
+        this.createdAt = createdAt
+    }
+
+    setStatus(status: boolean) {
+        this.fulfilled = status;
     }
 
     get noTaxTotal(): number {
