@@ -14,8 +14,8 @@
 .avatar {
   border: none;
   border-radius: 50%;
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
   margin: 0.5rem;
   display: flex;
   align-items: center;
@@ -32,10 +32,10 @@
 
 .item__info {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
-  align-items: center;
-  max-width: 50%;
+  align-items: flex-start;
+  max-width: 90%;
 
   h1,
   h3 {
@@ -43,12 +43,12 @@
   }
 
   h1 {
-    font-size: 1.3rem;
+    font-size: 0.9rem;
     color: $secondary-color;
   }
 
   h3 {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     color: $secondary-color;
   }
 }
@@ -59,9 +59,9 @@
   }
 
   .avatar {
-    width: 7rem;
-    height: 7rem;
-    margin: 2rem;
+    width: 5rem;
+    height: 5rem;
+    margin: 1rem;
   }
 
   .qty {
@@ -70,11 +70,11 @@
 
   .item__info {
     h1 {
-      font-size: 2.1rem;
+      font-size: 1.7rem;
     }
 
     h3 {
-      font-size: 1.7rem;
+      font-size: 1.3rem;
     }
   }
 }

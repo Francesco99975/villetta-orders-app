@@ -1,11 +1,17 @@
 <div class="wrapper">
-    <button class="bk-btn">
+    <button class="bk-btn" (click)="onBack()">
         <i class="fas fa-arrow-circle-left"></i>
     </button>
 
-    <div class="details-header">Order Details</div>
-
     <main class="order-details">
+        <h1 class="details-header">Order Details</h1>
+
+        <button class="sts-btn" (click)="onToggleStatus()">
+            {{ order.fulfilled ? 'Unfulfill' : 'Fulfill' }}
+        </button>
+
+        <div class="divider"></div>
+
         <div class="list-wrapper">
             <app-detail-item *ngFor="let item of order.items" 
                 [name]="item.product.name" 
@@ -18,19 +24,19 @@
 
         <div class="finances">
             <h2 class="detail-title">Finances</h2>
-            <div class="fees"></div>
-            <div class="hst"></div>
-            <div class="tip"></div>
-            <div class="total"></div>
+            <h3 class="details">Delivery Fees: {{ order.deliveryFees | currency}}</h3>
+            <h3 class="details">HST: {{ order.hst | currency}}</h3>
+            <h3 class="details">TIP: {{ order.chargedTip | currency }} ({{ order.tip }}%)</h3>
+            <h3 class="details">Total: {{ order.total | currency }}</h3>
         </div>
 
         <div class="divider"></div>
 
         <div class="client">
             <h2 class="detail-title">Client Info</h2>
-            <div class="name"></div>
-            <a class="email"></a>
-            <a href="" class="phone"></a>
+            <h3 class="details">{{ order.clientname }}</h3>
+            <h3><a [href]="'mailto:'+order.email" class="details">{{ order.email }}</a></h3>
+            <h3><a [href]="'tel:'+order.phone" class="details">{{ order.phone }}</a></h3>
         </div>
     </main>
 </div>

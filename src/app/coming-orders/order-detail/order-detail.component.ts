@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Order } from 'src/app/shared/models/order';
 import { OrdersService } from 'src/app/shared/orders.service';
@@ -13,7 +13,7 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
   order: Order;
   sub: Subscription;
 
-  constructor(private orderService: OrdersService, private route: ActivatedRoute) { }
+  constructor(private orderService: OrdersService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe((params: Params) => {
@@ -23,6 +23,10 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+  }
+
+  onBack() {
+    this.router.navigateByUrl('/orders');
   }
 
   onToggleStatus() {

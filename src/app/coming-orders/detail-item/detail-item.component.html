@@ -1,10 +1,10 @@
 <div class="item__container">
     <div class="item__info">
         <h1>{{ name | titlecase }}</h1>
-        <h3>{{ price | currency }}</h3>
+        <h3>Sub: {{ price * quantity | currency }} / {{ price | currency }}ea.</h3>
     </div>
 
     <div class="avatar">
-        <span class="qty">{{ quantity }}</span>
+        <span class="qty">x{{ quantity }}</span>
     </div>
 </div>
