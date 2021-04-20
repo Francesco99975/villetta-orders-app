@@ -1,1 +1,11 @@
-<p>coming-orders works!</p>
+<!-- <app-header></app-header> -->
+<main class="order-container">
+    <h1 class="title">Coming Orders</h1>
+    <app-order-item *ngFor="let order of ordersUnfl" 
+        [id]="order.id" 
+        [address]="order.address"
+        [eta]="order.eta"
+        [total]="order.total">
+
+    </app-order-item>
+</main>

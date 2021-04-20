@@ -74,7 +74,7 @@ export class Order {
     }
 
     get chargedTip(): number {
-        return (this.noTaxTotal * (this.tip / 100 + 1));
+        return (this.noTaxTotal * (this.tip / 100 + 1)) - this.noTaxTotal;
     }
 
     get total(): number {

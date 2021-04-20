@@ -18,6 +18,7 @@ export class OrdersService {
 
   set(orders: Order[]) {
     this.orders = orders;
+    console.dir(this.orders);
   }
 
   get() {
@@ -25,16 +26,20 @@ export class OrdersService {
   }
 
   fulfill(id: string) {
-    this.orders.find(order => order.id === id).setStatus(true);
     return this.http.put(`${environment.ORDERS_API}/order/${id}`, {status: true}).pipe(
-      tap(() => this.onChange.next(this.orders.slice()))
+      tap(() => {
+        this.orders.find(order => order.id === id).setStatus(true);
+        this.onChange.next(this.orders.slice())
+      })
     );
   }
 
   unfulfill(id: string) {
-    this.orders.find(order => order.id === id).setStatus(false);
     return this.http.put(`${environment.ORDERS_API}/order/${id}`, {status: false}).pipe(
-      tap(() => this.onChange.next(this.orders.slice()))
+      tap(() => {
+        this.orders.find(order => order.id === id).setStatus(false);
+        this.onChange.next(this.orders.slice());
+      })
     );
   }
 }

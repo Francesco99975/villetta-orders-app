@@ -35,7 +35,7 @@ export class OrdersResolverService {
             });
             
             return new Order({
-              id: order.id,
+              id: order._id,
               clientname: order.clientname,
               items: items,
               email: order.email,
