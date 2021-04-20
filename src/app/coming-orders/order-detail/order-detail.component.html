@@ -1,1 +1,36 @@
-<p>order-detail works!</p>
+<div class="wrapper">
+    <button class="bk-btn">
+        <i class="fas fa-arrow-circle-left"></i>
+    </button>
+
+    <div class="details-header">Order Details</div>
+
+    <main class="order-details">
+        <div class="list-wrapper">
+            <app-detail-item *ngFor="let item of order.items" 
+                [name]="item.product.name" 
+                [price]="item.product.price" 
+                [quantity]="item.quantity">
+            </app-detail-item>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="finances">
+            <h2 class="detail-title">Finances</h2>
+            <div class="fees"></div>
+            <div class="hst"></div>
+            <div class="tip"></div>
+            <div class="total"></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="client">
+            <h2 class="detail-title">Client Info</h2>
+            <div class="name"></div>
+            <a class="email"></a>
+            <a href="" class="phone"></a>
+        </div>
+    </main>
+</div>

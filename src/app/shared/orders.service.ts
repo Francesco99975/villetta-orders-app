@@ -11,8 +11,10 @@ import { tap } from 'rxjs/operators';
 export class OrdersService {
 
   private orders: Order[] = [];
+  switch: boolean = true;
 
   onChange: Subject<Order[]> = new Subject();
+  switchChange: Subject<boolean> = new Subject();
 
   constructor(private http: HttpClient) {}
 
@@ -23,6 +25,19 @@ export class OrdersService {
 
   get() {
     return this.orders.slice();
+  }
+
+  getOrder(id: string): Order {
+    return this.orders.find((order) => order.id === id);
+  }
+
+  toggleSwitch() {
+    this.switch = !this.switch;
+    this.switchChange.next(this.switch);
+  }
+
+  get gains(): number {
+    return this.orders.reduce((prev, cur) => prev + cur.total, 0.0);
   }
 
   fulfill(id: string) {

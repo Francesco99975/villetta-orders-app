@@ -3,9 +3,10 @@
         <span class="total">{{ total | currency }}</span>
     </div>
 
-    <div class="item__info">
+    <div class="item__info" (click)="onDetail()">
         <h1>{{ address | titlecase }}</h1>
-        <countdown class="ctn" [config]="config"></countdown>
+        <countdown *ngIf="leftTime > 0" class="ctn" [config]="config"></countdown>
+        <h3 *ngIf="leftTime <= 0" id="exp" class="ctn">Expired</h3>
     </div>
 
     <a [href]="mapsLink" target="_blank" class="map-btn">

@@ -3,6 +3,7 @@
 .order-container {
   width: 100%;
   height: 100vh;
+  padding-top: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,4 +16,8 @@
   letter-spacing: 0.2rem;
   font-weight: bold;
   text-align: center;
+}
+
+.empty {
+  margin: auto;
 }

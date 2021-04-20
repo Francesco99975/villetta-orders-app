@@ -5,21 +5,15 @@ import { OrdersResolverService } from './shared/orders-resolver.service';
 
 const routes: Routes = [
   {
-    path: '', pathMatch: "full", redirectTo: 'coming'
+    path: '', pathMatch: "full", redirectTo: 'orders'
   },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)
   },
   {
-    path: 'coming',
+    path: 'orders',
     loadChildren: () => import('./coming-orders/coming-orders.module').then((m) => m.ComingOrdersModule),
-    canActivate: [AuthGuard],
-    resolve: [OrdersResolverService]
-  }, 
-  {
-    path: 'fulfilled',
-    loadChildren: () => import('./fulfilled-orders/fulfilled-orders.module').then((m) => m.FulfilledOrdersModule),
     canActivate: [AuthGuard],
     resolve: [OrdersResolverService]
   }

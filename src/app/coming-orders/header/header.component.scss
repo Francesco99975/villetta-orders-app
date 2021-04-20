@@ -1,14 +1,9 @@
 @import "../../../variables.scss";
 
-.wrapper {
-  width: 100%;
-  height: 5rem;
-}
-
 .main-header {
   width: 100%;
   height: 5rem;
-  background-color: $primary-color;
+  background-color: $important-color;
   position: fixed;
   top: 0;
   left: 0;
@@ -18,7 +13,7 @@
   justify-content: space-between;
 }
 .brand {
-  display: none;
+  margin: 0.5rem;
   > img {
     margin-right: 0.5rem;
     border-radius: 5px;
@@ -118,19 +113,18 @@
 .mobile-nav__item {
   cursor: pointer;
 }
-@media (min-width: 55rem) {
-  .main-nav {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  .toggle-button {
-    display: none;
-  }
-  .brand {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 1rem;
-  }
+
+.gains {
+  font-size: 1.5rem;
+  color: $highlight;
+  font-weight: bold;
+}
+
+.switch {
+  font-size: 1.5rem;
+  color: $highlight;
+  margin: 1rem;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
 }

@@ -1,25 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { OrdersService } from 'src/app/shared/orders.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy{
+  gains: number = 0.0;
+  switch: boolean;
 
-  constructor() { }
+  sub: Subscription;
+
+  constructor(private orders: OrdersService) { }
 
   ngOnInit(): void {
+    this.gains = this.orders.gains;
+    this.switch = this.orders.switch;
+    this.sub = this.orders.switchChange.subscribe((sw: boolean) => this.switch = sw);
   }
 
-  onOpenNav() {
-    document.querySelector('.backdrop').classList.add('open');
-    document.querySelector('.mobile-nav').classList.add('open');
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
-  onCloseNav() {
-    document.querySelector('.backdrop').classList.remove('open');
-    document.querySelector('.mobile-nav').classList.remove('open');
+  onSwitch() {
+    this.orders.toggleSwitch();
   }
 
 }
