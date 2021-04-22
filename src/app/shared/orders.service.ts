@@ -37,7 +37,7 @@ export class OrdersService {
   }
 
   get gains(): number {
-    return this.orders.reduce((prev, cur) => prev + cur.total, 0.0);
+    return this.orders.filter((order) => order.fulfilled).reduce((prev, cur) => prev + cur.total, 0.0);
   }
 
   fulfill(id: string) {

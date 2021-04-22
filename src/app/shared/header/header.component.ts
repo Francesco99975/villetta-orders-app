@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 import { OrdersService } from 'src/app/shared/orders.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   sub: Subscription;
 
-  constructor(private orders: OrdersService) { }
+  constructor(private orders: OrdersService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.gains = this.orders.gains;
@@ -23,6 +24,20 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+  }
+
+  onOpenNav() {
+    document.querySelector('.backdrop').classList.add('open');
+    document.querySelector('.mobile-nav').classList.add('open');
+  }
+
+  onCloseNav() {
+    document.querySelector('.mobile-nav').classList.remove('open');
+    document.querySelector('.backdrop').classList.remove('open');
+  }
+
+  onLogout() {
+    this.auth.logout();
   }
 
   onSwitch() {

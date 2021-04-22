@@ -3,19 +3,18 @@ import { Router } from '@angular/router';
 import { CountdownConfig } from 'ngx-countdown';
 
 @Component({
-  selector: 'app-order-item',
-  templateUrl: './order-item.component.html',
-  styleUrls: ['./order-item.component.scss']
+  selector: 'app-pickup-item',
+  templateUrl: './pickup-item.component.html',
+  styleUrls: ['./pickup-item.component.scss']
 })
-export class OrderItemComponent implements OnInit {
+export class PickupItemComponent implements OnInit {
   @Input() id: string;
-  @Input() address: string;
+  @Input() name: string;
   @Input() eta: number;
   @Input() createdAt: Date;
   @Input() fulfilled: boolean;
   @Input() total: number;
 
-  mapsLink: string;
   leftTime: number;
 
   config: CountdownConfig;
@@ -27,12 +26,10 @@ export class OrderItemComponent implements OnInit {
     this.config = {
       leftTime: this.leftTime >= 0 ? this.leftTime : 0
     };
-    const formattedAddress = this.address.split(' ').join('+');
-    this.mapsLink = `https://maps.google.com/?q=${formattedAddress}+ON+Canada`;
   }
 
   onDetail() {
-    this.router.navigateByUrl(`/orders/${this.id}`);
+    this.router.navigateByUrl(`/pickup/${this.id}`);
   }
 
 }

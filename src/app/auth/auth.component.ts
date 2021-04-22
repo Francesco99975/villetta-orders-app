@@ -30,7 +30,7 @@ export class AuthComponent implements OnInit {
       this.isLoading = true;
       this.auth.login(this.form.get('username').value, this.form.get('password').value).subscribe((res) => {
         this.isLoading = false;
-        this.router.navigateByUrl('/coming', {replaceUrl: true});
+        this.router.navigateByUrl('/orders', {replaceUrl: true});
       }, (err) => {
         this.isLoading = false;
         this.error = err.error.message;

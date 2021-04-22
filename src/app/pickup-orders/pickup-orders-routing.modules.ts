@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { OrderDetailComponent } from '../shared/order-detail/order-detail.component';
 import { OrdersResolverService } from '../shared/orders-resolver.service';
 
-import { ComingOrdersComponent } from './coming-orders.component';
-import { OrderDetailComponent } from '../shared/order-detail/order-detail.component';
+import { PickupOrdersComponent } from './pickup-orders.component';
 
 const routes: Routes = [
   { 
     path: '', 
-    component: ComingOrdersComponent 
+    component: PickupOrdersComponent 
   },
   {
     path: ":id",
@@ -21,4 +21,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ComingOrdersRoutingModule { }
+export class PickupOrdersRoutingModule { }

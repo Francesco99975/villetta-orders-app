@@ -4,11 +4,11 @@ import { Order } from '../shared/models/order';
 import { OrdersService } from '../shared/orders.service';
 
 @Component({
-  selector: 'app-coming-orders',
-  templateUrl: './coming-orders.component.html',
-  styleUrls: ['./coming-orders.component.scss']
+  selector: 'app-pickup-orders',
+  templateUrl: './pickup-orders.component.html',
+  styleUrls: ['./pickup-orders.component.scss']
 })
-export class ComingOrdersComponent implements OnInit, OnDestroy {
+export class PickupOrdersComponent implements OnInit, OnDestroy {
 
   orders: Order[] = [];
   displayedOrders: Order[] = [];
@@ -40,11 +40,11 @@ export class ComingOrdersComponent implements OnInit, OnDestroy {
   }
 
   get ordersUnfl(): Order[] {
-    return this.orders.filter((order) => !order.fulfilled && !order.pickup).sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
+    return this.orders.filter((order) => !order.fulfilled && order.pickup).sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
   }
 
   get ordersFl(): Order[] {
-    return this.orders.filter((order) => order.fulfilled && !order.pickup).sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
+    return this.orders.filter((order) => order.fulfilled && order.pickup).sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
   }
 
 }

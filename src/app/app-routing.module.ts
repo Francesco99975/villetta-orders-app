@@ -16,6 +16,12 @@ const routes: Routes = [
     loadChildren: () => import('./coming-orders/coming-orders.module').then((m) => m.ComingOrdersModule),
     canActivate: [AuthGuard],
     resolve: [OrdersResolverService]
+  },
+  {
+    path: 'pickup',
+    loadChildren: () => import('./pickup-orders/pickup-orders.module').then((m) => m.PickupOrdersModule),
+    canActivate: [AuthGuard],
+    resolve: [OrdersResolverService]
   }
 ];
 

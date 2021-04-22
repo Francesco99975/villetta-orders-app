@@ -70,11 +70,15 @@ export class Order {
     }
 
     get hst(): number {
-        return (this.noTaxTotal * 1.13) - this.noTaxTotal;
+        return this.pickup ? 
+            (this.noTaxTotal * 1.13) - this.noTaxTotal :
+            ((this.noTaxTotal + this.deliveryFees) * 1.13) - (this.noTaxTotal + this.deliveryFees);
     }
 
     get chargedTip(): number {
-        return (this.noTaxTotal * (this.tip / 100 + 1)) - this.noTaxTotal;
+        return this.pickup ? 
+                ((this.noTaxTotal * 1.13) * (this.tip / 100 + 1)) - (this.noTaxTotal * 1.13) :
+                (((this.noTaxTotal + this.deliveryFees) * 1.13) * (this.tip / 100 + 1)) - ((this.noTaxTotal + this.deliveryFees) * 1.13)
     }
 
     get total(): number {
