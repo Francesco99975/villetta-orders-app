@@ -12,11 +12,13 @@ import { OrdersService } from 'src/app/shared/orders.service';
 export class OrderDetailComponent implements OnInit, OnDestroy {
   order: Order;
   sub: Subscription;
+  isLoading: boolean;
 
   constructor(private orderService: OrdersService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe((params: Params) => {
+      this.isLoading = false;
       this.order = this.orderService.getOrder(params["id"]);
     });
   }
@@ -30,13 +32,16 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
   }
 
   onToggleStatus() {
+    this.isLoading = true;
     if(this.order.fulfilled) {
       this.orderService.unfulfill(this.order.id).subscribe((res: any) => {
         this.order = this.orderService.getOrder(res.id);
+        this.isLoading = false;
       });
     } else {
       this.orderService.fulfill(this.order.id).subscribe((res: any) => {
         this.order = this.orderService.getOrder(res.id);
+        this.isLoading = false;
       });
     }
   }

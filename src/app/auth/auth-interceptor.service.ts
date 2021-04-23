@@ -7,7 +7,8 @@ import {
   HttpHeaders,
 } from "@angular/common/http";
 import { AuthService } from "./auth.service";
-import { take, exhaustMap } from "rxjs/operators";
+import { take, exhaustMap, catchError } from "rxjs/operators";
+import { throwError } from "rxjs";
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
@@ -21,7 +22,13 @@ export class AuthInterceptorService implements HttpInterceptor {
         const modifiedReq = req.clone(
           { headers: new HttpHeaders(`Authorization: Bearer ${user.token}`) },
         );
-        return next.handle(modifiedReq);
+        return next.handle(modifiedReq).pipe(
+          catchError((error) => {
+            console.log('error is intercept')
+            console.error(error);
+            return throwError(error.message);
+          })
+        );
       }),
     );
   }

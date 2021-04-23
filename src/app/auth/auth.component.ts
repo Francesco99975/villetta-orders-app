@@ -33,7 +33,7 @@ export class AuthComponent implements OnInit {
         this.router.navigateByUrl('/orders', {replaceUrl: true});
       }, (err) => {
         this.isLoading = false;
-        this.error = err.error.message;
+        this.error = "Wrong username or password";
       });
     } else {
       this.formError = "This field is required!"
