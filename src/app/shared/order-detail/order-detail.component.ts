@@ -28,7 +28,7 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
   }
 
   onBack() {
-    this.router.navigateByUrl('/orders');
+    this.router.navigateByUrl(!this.order.pickup ? '/orders' : '/pickup');
   }
 
   onToggleStatus() {

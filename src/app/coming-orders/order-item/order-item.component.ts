@@ -12,6 +12,7 @@ export class OrderItemComponent implements OnInit {
   @Input() address: string;
   @Input() eta: number;
   @Input() createdAt: Date;
+  @Input() method: string;
   @Input() fulfilled: boolean;
   @Input() total: number;
 

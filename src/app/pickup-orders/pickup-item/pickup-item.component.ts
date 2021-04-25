@@ -12,6 +12,7 @@ export class PickupItemComponent implements OnInit {
   @Input() name: string;
   @Input() eta: number;
   @Input() createdAt: Date;
+  @Input() method: string;
   @Input() fulfilled: boolean;
   @Input() total: number;
 

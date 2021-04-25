@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { environment } from "../../environments/environment";
 
 @Component({
   selector: 'app-auth',
@@ -32,12 +34,11 @@ export class AuthComponent implements OnInit {
         this.isLoading = false;
         this.router.navigateByUrl('/orders', {replaceUrl: true});
       }, (err) => {
-        this.isLoading = false;
         this.error = "Wrong username or password";
+        this.isLoading = false;
       });
     } else {
       this.formError = "This field is required!"
     }
   }
-
 }

@@ -44,6 +44,7 @@ export class OrdersResolverService {
               pickup: order.pickup,
               deliveryFees: order.deliveryFees,
               tip: order.tip,
+              method: order.method,
               eta: order.eta,
               fulfilled: order.fulfilled,
               createdAt: new Date(order.createdAt)

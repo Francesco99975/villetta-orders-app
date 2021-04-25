@@ -42,11 +42,12 @@ export class Order {
     pickup: boolean;
     deliveryFees: number;
     tip: number;
+    method: string;
     eta: number;
     fulfilled: boolean;
     createdAt: Date;
 
-    constructor({id, clientname, items, email, address, phone, pickup, deliveryFees, tip, eta, fulfilled, createdAt}) {
+    constructor({id, clientname, items, email, address, phone, pickup, deliveryFees, tip, method, eta, fulfilled, createdAt}) {
         this.id = id;
         this.clientname = clientname;
         this.items = items;
@@ -56,6 +57,7 @@ export class Order {
         this.pickup = pickup;
         this.deliveryFees = deliveryFees;
         this.tip = tip;
+        this.method = method;
         this.eta = eta;
         this.fulfilled = fulfilled
         this.createdAt = createdAt

@@ -6,12 +6,10 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AuthInterceptorService } from "./auth/auth-interceptor.service"
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
-import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SettingsComponent
+    AppComponent
   ],
   imports: [
     SharedModule,
