@@ -20,11 +20,15 @@ export class OrdersService {
 
   set(orders: Order[]) {
     this.orders = orders;
-    console.dir(this.orders);
   }
 
   get() {
     return this.orders.slice();
+  }
+
+  add(order: Order)  {
+    this.orders.push(order);
+    this.onChange.next(this.orders.slice());
   }
 
   getOrder(id: string): Order {
