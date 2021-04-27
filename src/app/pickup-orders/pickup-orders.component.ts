@@ -16,6 +16,7 @@ export class PickupOrdersComponent implements OnInit, OnDestroy {
   switch: boolean;
   sub: Subscription;
   subSwitch: Subscription;
+  subIo: Subscription;
 
   constructor(private ordersService: OrdersService, private socketIo: SocketIoService) { }
 
@@ -36,7 +37,7 @@ export class PickupOrdersComponent implements OnInit, OnDestroy {
         this.displayedOrders = this.ordersFl;
       }
     });
-    this.socketIo.listenToSever().subscribe((order) => {
+    this.subIo = this.socketIo.listenToSever().subscribe((order) => {
       let items: Item[] = order.items.map((item: any) => {
         let product: Dish = new Dish({
           id: item.product.id,
@@ -76,6 +77,7 @@ export class PickupOrdersComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub.unsubscribe();
     this.subSwitch.unsubscribe();
+    this.subIo.unsubscribe();
   }
 
   get ordersUnfl(): Order[] {

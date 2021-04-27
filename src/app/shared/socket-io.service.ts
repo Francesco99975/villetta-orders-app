@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { io, Socket } from "socket.io-client";
 import { environment } from "../../environments/environment";
-import { Order } from './models/order';
 
 @Injectable({
   providedIn: 'root'
