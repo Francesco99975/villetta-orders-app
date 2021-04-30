@@ -1,14 +1,14 @@
-<div class="item__container">
+<div class="item__container" (click)="onDetail()">
     <div class="badge">
         <i *ngIf="method === 'c'" id="cash" class="fas fa-dollar-sign"></i>
         <i *ngIf="method === 's'" id="stripe" class="far fa-credit-card"></i>
         <i *ngIf="method === 'p'" id="paypal" class="fab fa-cc-paypal"></i>
     </div>
-    <div class="avatar" (click)="onDetail()">
+    <div class="avatar">
         <span class="total">{{ total | currency }}</span>
     </div>
 
-    <div class="item__info" (click)="onDetail()">
+    <div class="item__info">
         <h1>{{ name | titlecase }}</h1>
         <countdown *ngIf="leftTime > 0 && !fulfilled" class="ctn" [config]="config"></countdown>
         <h3 *ngIf="leftTime <= 0 && !fulfilled" id="exp" class="ctn">Expired</h3>

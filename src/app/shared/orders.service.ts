@@ -22,6 +22,11 @@ export class OrdersService {
     this.orders = orders;
   }
 
+  setIo(orders: Order[]) {
+    this.orders = orders;
+    this.onChange.next(this.orders.slice());
+  }
+
   get() {
     return this.orders.slice();
   }

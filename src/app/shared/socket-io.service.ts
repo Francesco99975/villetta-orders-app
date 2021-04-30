@@ -14,9 +14,9 @@ export class SocketIoService {
     this.clientSocket = io(environment.ORDERS_API);
   }
 
-  listenToSever(): Observable<any> {
+  listenToSever(event: string): Observable<any> {
     return new Observable((subscribe) => {
-      this.clientSocket.on('create', (data) => {
+      this.clientSocket.on(event, (data) => {
         subscribe.next(data);
       });
     });
