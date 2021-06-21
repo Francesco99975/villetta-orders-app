@@ -18,6 +18,10 @@ export class OrdersService {
 
   constructor(private http: HttpClient) {}
 
+  setNotifSub(sub: any) {
+    return this.http.post(`${environment.ORDERS_API}/subscribe`, sub);
+  }
+
   set(orders: Order[]) {
     this.orders = orders;
   }

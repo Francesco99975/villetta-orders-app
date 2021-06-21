@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { SwUpdate } from '@angular/service-worker';
 import { Subscription } from 'rxjs';
 import { AuthService } from './auth/auth.service';
 import { Dish, Item, Order } from './shared/models/order';
+import { NotificationsService } from './shared/notifications.service';
 import { OrdersService } from './shared/orders.service';
 import { SocketIoService } from './shared/socket-io.service';
 
@@ -15,7 +17,11 @@ export class AppComponent implements OnInit, OnDestroy {
   subIo: Subscription;
   subIo2: Subscription;
 
-  constructor(private auth: AuthService, private ordersService: OrdersService, private socketIo: SocketIoService) {}
+  constructor(private auth: AuthService, private ordersService: OrdersService, private socketIo: SocketIoService, private notif: NotificationsService, private swUpdate: SwUpdate) {
+    this.swUpdate.available.subscribe(event => {
+      this.swUpdate.activateUpdate().then(() => document.location.reload());
+    });
+  }
   
   ngOnInit(): void {
     this.auth.autoLogin();
@@ -93,6 +99,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
       this.ordersService.setIo(newOrders);
     });
+
+    this.notif.subscribeToNotifications();
   }
 
   ngOnDestroy(): void {
