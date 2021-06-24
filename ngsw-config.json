@@ -33,7 +33,7 @@
   "dataGroups": [
     {
       "name": "orders-api",
-      "urls": ["http://192.168.0.38:3000/orders"],
+      "urls": ["https://vilpay.francescobarranca.dev/orders"],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 20,
