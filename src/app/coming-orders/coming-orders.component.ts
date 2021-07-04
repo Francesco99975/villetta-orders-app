@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Dish, Item, Order } from '../shared/models/order';
+import { NotificationsService } from '../shared/notifications.service';
 import { OrdersService } from '../shared/orders.service';
 import { SocketIoService } from '../shared/socket-io.service';
 
@@ -17,7 +18,7 @@ export class ComingOrdersComponent implements OnInit, OnDestroy {
   sub: Subscription;
   subSwitch: Subscription;
 
-  constructor(private ordersService: OrdersService, private socketIo: SocketIoService) { }
+  constructor(private ordersService: OrdersService, private notif: NotificationsService) { }
 
   ngOnInit(): void {
     this.orders = this.ordersService.get();
@@ -36,6 +37,8 @@ export class ComingOrdersComponent implements OnInit, OnDestroy {
         this.displayedOrders = this.ordersFl;
       }
     });
+
+    this.notif.subscribeToNotifications();
   }
 
   ngOnDestroy(): void {
